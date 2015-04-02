@@ -1,0 +1,15 @@
+apply plugin: 'idea'
+apply plugin: 'scala'
+apply plugin: 'groovy'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'org.scala-lang:scala-library:2.11.6'
+    testCompile "org.codehaus.groovy:groovy-all:2.4.3"
+    testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
+    testRuntime "cglib:cglib-nodep:3.1"
+    testRuntime "org.objenesis:objenesis:2.1"
+}
