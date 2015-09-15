@@ -12,4 +12,5 @@ dependencies {
     testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
     testRuntime "cglib:cglib-nodep:3.1"
     testRuntime "org.objenesis:objenesis:2.1"
+    testCompile 'com.wiredforcode:groovy-scala-extension-module:0.3'
 }

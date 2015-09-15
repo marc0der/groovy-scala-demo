@@ -2,19 +2,17 @@ package example
 
 import spock.lang.Specification
 
-import static scala.collection.JavaConversions.asScalaIterator
-
 class FizBuzzSpec extends Specification {
 
     def range
 
     void setup() {
-        range = scalaCollection(1..20)
+        range = 1..20
     }
 
     void "should return the number for contiguous range"() {
         expect:
-        def result = FizzBuzz.process(range)
+        def result = FizzBuzz.process(range.toScalaList())
         expectAt(result, word, position)
 
         where:
@@ -33,7 +31,7 @@ class FizBuzzSpec extends Specification {
 
     void "should return fizz for numbers that are multiples of 3"() {
         expect:
-        def result = FizzBuzz.process(range)
+        def result = FizzBuzz.process(range.toScalaList())
         expectAt(result, word, position)
 
         where:
@@ -45,7 +43,7 @@ class FizBuzzSpec extends Specification {
 
     void "should return buzz for numbers that are multiples of 5"() {
         expect:
-        def result = FizzBuzz.process(range)
+        def result = FizzBuzz.process(range.toScalaList())
         expectAt(result, word, position)
 
         where:
@@ -56,7 +54,7 @@ class FizBuzzSpec extends Specification {
 
     void "should return fizzbuzz for numbers that are multiples of 15"() {
         expect:
-        def result = FizzBuzz.process(range)
+        def result = FizzBuzz.process(range.toScalaList())
         expectAt(result, word, position)
 
         where:
@@ -66,17 +64,13 @@ class FizBuzzSpec extends Specification {
 
     void "should return lucky for numbers containing 3"() {
         expect:
-        def result = FizzBuzz.process(range)
+        def result = FizzBuzz.process(range.toScalaList())
         expectAt(result, "lucky", position)
 
         where:
         word    |   position
         "lucky" |   3
         "lucky" |   13
-    }
-
-    private static scalaCollection(range) {
-        asScalaIterator(range.iterator()).toList()
     }
 
     private static expectAt(String fizzBuzz, String word, int postition) {
